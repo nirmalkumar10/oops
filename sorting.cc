@@ -14,7 +14,7 @@ Description :Program to sort an array of integer values using function pointers.
 
 using namespace std;
 
-#define MAXSIZE 100
+#define MAXSIZE 10
 
 struct signature
 {
@@ -127,7 +127,7 @@ int main()
 				cout <<"["<<count+1<<"]:";
 				cin >> iarray[count];
 				if(iarray[count] == -1){
-					NUM_ELEMENTS = count;
+					NUM_ELEMENTS = count +1;
 					break;
 				}
 			}
@@ -140,7 +140,8 @@ int main()
 				iarray[count] = r ;
 
 			}
-			NUM_ELEMENTS = MAXSIZE;
+			iarray[count - 1] = -1;
+			NUM_ELEMENTS = MAXSIZE ;
 			break;
 		default:
 			cout << "Wrong option "<< endl;
@@ -183,7 +184,7 @@ int main()
 
 	cout << "\n\nSorted array :" << endl;	
 
-	for(count = 1 ;count < NUM_ELEMENTS;count++)
+	for(count = 0 ;count < NUM_ELEMENTS-1;count++)
 		cout << iarray[count] << " " ;
 
 	cout << "\n\nSignature of function used: " << "\n\nFunction name: " << sign.funcname <<"\n\nNumber of parameters:"<< sign.numargs;
@@ -196,7 +197,7 @@ int main()
 signature sort_array(int iarray[],signature (*sort_func)(int a[],int b,int c))
 {
 	signature type;
-	type = sort_func(iarray,0,NUM_ELEMENTS-1);
+	type = sort_func(iarray,0,NUM_ELEMENTS-2);
 
 	return type;
 
