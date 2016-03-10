@@ -14,13 +14,13 @@ Description :Program to sort an array of integer values using function pointers.
 
 using namespace std;
 
-#define MAXSIZE 10
+#define MAXSIZE 100
 
 struct signature
 {
-string funcname;
-short numargs;
-const char **num;
+	string funcname;
+	short numargs;
+	const char **num;
 };
 
 typedef struct signature signature;
@@ -63,7 +63,7 @@ signature quicksort_descending( int a[], int low, int high )
 	sign.numargs = 3;                                                  /*number of arguments and type of each argument */
 	sign.num = (const char **)malloc(sizeof(const char *)*sign.numargs);
 	sign.num[0] = sign.num[1] = sign.num[2] = "int" ;
-			
+
 	return sign;
 }
 
@@ -111,7 +111,6 @@ int main()
 	char ch;
 	signature sign;
 	std::string sort;
-	std::string type;
 	signature (*sort_func)(int[],int,int);
 	cout << setw(10);
 	cout << "**********Sorting Program******\n" << endl;
@@ -128,8 +127,8 @@ int main()
 				cout <<"["<<count+1<<"]:";
 				cin >> iarray[count];
 				if(iarray[count] == -1){
-				NUM_ELEMENTS = count;
-				break;
+					NUM_ELEMENTS = count;
+					break;
 				}
 			}
 			break;
@@ -143,6 +142,9 @@ int main()
 			}
 			NUM_ELEMENTS = MAXSIZE;
 			break;
+		default:
+			cout << "Wrong option "<< endl;
+			exit(EXIT_FAILURE);
 	}
 	cout << "Do you want to print the input elements ? Press \"y\" for yes \"n\" for no\n" << endl;
 	cin >> ch;
@@ -168,7 +170,7 @@ int main()
 
 		}
 	}
-	
+
 	if(invalid_entry == 0)
 		exit(EXIT_FAILURE);
 
@@ -187,15 +189,14 @@ int main()
 	cout << "\n\nSignature of function used: " << "\n\nFunction name: " << sign.funcname <<"\n\nNumber of parameters:"<< sign.numargs;
 	cout << "\n"<< endl;
 	for(count = 0;count < sign.numargs ;count ++)
-	cout << "Type of argument["<<count<<"]:"<<sign.num[count] <<  endl;
-return 0;
+		cout << "Type of argument["<<count<<"]:"<<sign.num[count] <<  endl;
+	return 0;
 }
 
 signature sort_array(int iarray[],signature (*sort_func)(int a[],int b,int c))
 {
 	signature type;
 	type = sort_func(iarray,0,NUM_ELEMENTS-1);
-
 
 	return type;
 
