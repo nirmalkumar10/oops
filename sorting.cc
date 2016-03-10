@@ -160,7 +160,7 @@ int main()
 
 		getline(std::cin,sort);
 		if(sort == "Asc" || sort == "Dsc"){
-			invalid_entry = 0;	
+			break;	
 		}
 		else {
 			cout << "Please enter a valid option " << endl;
@@ -169,7 +169,7 @@ int main()
 		}
 	}
 	
-	if(invalid_entry != 0)
+	if(invalid_entry == 0)
 		exit(EXIT_FAILURE);
 
 	if(sort == "Asc")
@@ -188,7 +188,7 @@ int main()
 	cout << "\n"<< endl;
 	for(count = 0;count < sign.numargs ;count ++)
 	cout << "Type of argument["<<count<<"]:"<<sign.num[count] <<  endl;
-
+return 0;
 }
 
 signature sort_array(int iarray[],signature (*sort_func)(int a[],int b,int c))
