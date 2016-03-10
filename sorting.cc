@@ -14,7 +14,7 @@ Description :Program to sort an array of integer values using function pointers.
 
 using namespace std;
 
-#define MAXSIZE 10
+#define MAXSIZE 100
 
 struct signature
 {
